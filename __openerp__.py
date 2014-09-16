@@ -4,5 +4,8 @@
 	'description' : 'con este modulo apredo openerp',
 	'autor' : 'Francis',
 	'version' : 'dia_1',
-	'depends' : ['base'] 
+	'depends' : ['base',],
+	'data' : '',
+	'demo': '',
+	 
 }
