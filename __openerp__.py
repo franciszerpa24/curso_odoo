@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+
 {
 	'name' : 'curso_openerp', 
 	'description' : 'con este modulo apredo openerp',
@@ -7,5 +8,5 @@
 	'depends' : ['base',],
 	'data' : '',
 	'demo': '',
-	 
+
 }
