@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- vista FOR  DE CO MULTIMEDIA -->
+    	<record  id="view_categoria_pelicula_form" model="ir.ui.view" >
+    		<field name="name" >co.categoria_pelicula.form</field>
+    		<field name="model" >co.categoria_pelicula</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<form string="Categoría" version="7.0">
+    				<sheet>
+    					<div class="oe_title"> 
+    						<label for="nombre" class="oe_edit_only"/>
+    						<h1>
+    							<field name="nombre" />
+    						</h1>
+                            <label for="padre_id" class="oe_edit_only"/>
+                            <h3>
+                                <field name="padre_id" />
+                            </h3>
+    					</div>
+    					<notebook>
+    						<page string="Detalles">
+    							<group string="Descripcion">
+                                    <field name="descripcion"  nolabel="1"/>
+    							</group>
+                                <group string="Subcategoria">
+                                    <field name="hijo_id"  nolabel="1"/>
+                                </group>
+    							 <!-- <group string="Medios Disponibles">
+    								<field name="medio_ids" nolabel="1"/>
+    							</group> -->
+    						</page>  					
+    					</notebook>
+     				</sheet>
+    			</form>
+    		</field>
+    	</record>
+<!--VISTA TREE DE CO MULTIMEDIA-->
+		<record  id="view_categoria_pelicula_tree" model="ir.ui.view" >
+    		<field name="name" >co.categoria_pelicula.tree</field>
+    		<field name="model" >co.categoria_pelicula</field>
+            <field name="field_parent" >hijo_id</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<tree string="Categoría" >
+					<field name="nombre" />
+    				
+    			</tree>
+    		</field>
+    	</record>
+
+
+
+
+    	<record id="action_categoria_pelicula" model="ir.actions.act_window" >
+    		<field name="name" >Categorías</field><!-- es-a esla verdadera etiqueta del menu-->
+    		<field name="res_model" >co.categoria_pelicula</field>
+    		<field name="view_type" >form</field>
+    		<field name="view_mode" >form,tree</field>
+    		<field name="view_id" ref="view_categoria_pelicula_tree"/>
+    		<field name="help" type="html">
+    			<p class="oe_view_nocontent_create">
+    				Aca se registran los contenidos de las categorias que estarán disponibles en el cátalogo.
+    			</p>
+    		</field>
+    	</record> 
+
+	   	<menuitem action="action_categoria_pelicula" id="menu_categoria_pelicula" sequence="5" 
+	   		parent="submebu_multimedia" /> 
+	   		<!--este es el menu multimedia como tal.... y toma el action de la de la linea 37-->
+    </data>
+</openerp>

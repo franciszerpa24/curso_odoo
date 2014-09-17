@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- vista FOR  DE CO MULTIMEDIA -->
+    	<record  id="view_solicitud_form" model="ir.ui.view" >
+    		<field name="name" >co.solicitud.form</field>
+    		<field name="model" >co.solicitud</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<form string="Solicitud" version="7.0">
+    				<sheet>
+    					<div class="oe_title"> 
+    						<label for="codigo" class="oe_edit_only"/>
+    						<h1>
+    							<field name="codigo" />
+    						</h1>
+    						
+    					</div>
+
+    					<notebook>
+    						<page string="Detalles">
+    							<group>
+    								<field name="suscriptor_id" required="1"/>
+    								<field name="multimedia_id" required="1"/>
+    								<field name="medio_id" required="1"/>
+                                    <field name="tienda_id" required="1"/>
+                                    <field name="fecha_soli" required="1"/>
+                                    <field name="duracion_dias" required="1"/>
+    								 <!-- con nolabel = a 1 le quito la etiqueta al datagrid-->
+    							</group>
+    							 <!-- <group string="Medios Disponibles">
+    								<field name="medio_ids" nolabel="1"/>
+    							</group> -->
+    						</page>  					
+    					</notebook>
+     				</sheet>
+    			</form>
+    		</field>
+    	</record>
+<!--VISTA TREE DE CO MULTIMEDIA-->
+		<record  id="view_solicitud_tree" model="ir.ui.view" >
+    		<field name="name" >co.solicitud.tree</field>
+    		<field name="model" >co.solicitud</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<tree string="Solicitudes" >
+					<field name="suscriptor_id" />
+    				<field name="multimedia_id" />
+    				<field name="medio_id" />
+    				<field name="fecha_soli" />
+                    <field name="duracion_dias" />
+    			</tree>
+    		</field>
+    	</record>
+
+
+
+
+    	<record id="action_solicitud" model="ir.actions.act_window" >
+    		<field name="name" >Solicitudes</field><!-- es-a esla verdadera etiqueta del menu-->
+    		<field name="res_model" >co.solicitud</field>
+    		<field name="view_type" >form</field>
+    		<field name="view_mode" >form,tree</field>
+    		<field name="view_id" ref="view_solicitud_tree"/>
+    		<field name="help" type="html">
+    			<p class="oe_view_nocontent_create">
+    				Aca se registran los contenidos solicitudes que estarán disponibles en el cátalogo.
+    			</p>
+    		</field>
+    	</record> 
+
+	   	<menuitem action="action_solicitud" id="menu_solicitud" sequence="5" 
+	   		parent="submebu_multimedia" /> 
+	   		<!--este es el menu multimedia como tal.... y toma el action de la de la linea 37-->
+    </data>
+</openerp>

@@ -6,9 +6,11 @@ from openerp.osv import osv, fields
 class multimedia (osv.osv):
 	_name = 'co.multimedia'
 	_description = 'CO Multimedia'
+	_rec_name= 'titulo'
+	_order = 'fecha_publicacion desc'
 
 	_columns = {
-		'titulo' : fields.char('Titulo'),
+		'titulo' : fields.char('Titulo', required=True),
 		'fecha_publicacion' : fields.date('Fecha de publicacion'),
 		'codigo' : fields.char('Código'), 
 		'categoria_pelicula_id' : fields.many2one('co.categoria_pelicula','Categoria'),

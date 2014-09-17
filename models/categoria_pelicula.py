@@ -6,10 +6,11 @@ from openerp.osv import osv, fields
 class categoria_pelicula (osv.osv):
 	_name = 'co.categoria_pelicula'
 	_description = 'CO Categoria pelicula'
+	_rec_name= 'nombre'
 
-	_colums = {
-		'nombre_cat' : fields.char('Nombre de la Categoría'),
-		'descripcion' : fields.date('Descripción'),
+	_columns = {
+		'nombre' : fields.char('Nombre de la Categoría'),
+		'descripcion' : fields.char('Descripción'),
 		'padre_id' : fields.many2one('co.categoria_pelicula', 'Padre'),
 		'hijo_id' : fields.one2many(
 			'co.categoria_pelicula',

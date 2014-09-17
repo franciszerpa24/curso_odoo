@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- vista FOR  DE CO MULTIMEDIA -->
+    	<record  id="view_suscripcion_form" model="ir.ui.view" >
+    		<field name="name" >co.suscripcion.form</field>
+    		<field name="model" >co.suscripcion</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<form string="Suscripcion" version="7.0">
+    				<sheet>
+    					<label for="activo" />
+    					<field name="activo" />
+                        <separator />
+                            <div class="oe_title" >
+                                <label for="codigo" class="oe_edit_only" readonly="1"/>
+                                <h1>
+                                    <field name="codigo" />
+                                </h1>
+    					   </div>
+                           <notebook>
+    					       <page string="Detalles">
+    						      <group>
+                                    <field name="suscriptor_id" />
+    								<field name="tipo"/>
+    								<field name="fecha_inicio"/>
+    								<field name="fecha_fin"/>
+    							 </group>
+    							 
+    						</page>  					
+    					</notebook>
+     				</sheet>
+    			</form>
+    		</field>
+    	</record>
+<!--VISTA TREE DE CO MULTIMEDIA-->
+		<record  id="view_suscripcion_tree" model="ir.ui.view" >
+    		<field name="name" >co.suscripcion.tree</field>
+    		<field name="model" >co.suscripcion</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<tree string="Suscripcion" >
+					<field name="codigo" />
+    				<field name="suscriptor_id" />
+    				<field name="fecha_inicio" />
+    				<field name="fecha_fin" />
+                    <field name="tipo" />
+    			</tree>
+    		</field>
+    	</record>
+
+
+
+
+    	<record id="action_suscripcion" model="ir.actions.act_window" >
+    		<field name="name" >Suscripcion</field><!-- es-a esla verdadera etiqueta del menu-->
+    		<field name="res_model" >co.suscripcion</field>
+    		<field name="view_type" >form</field>
+    		<field name="view_mode" >form,tree</field>
+    		<field name="view_id" ref="view_suscripcion_tree"/>
+    		<field name="help" type="html">
+    			<p class="oe_view_nocontent_create">
+    				Aca se registran los contenidos multimedia que estarán disponibles en el cátalogo.
+    			</p>
+    		</field>
+    	</record> 
+
+	   	<menuitem action="action_suscripcion" id="menu_suscripcion" sequence="5" 
+	   		parent="submebu_multimedia" /> 
+	   		<!--este es el menu multimedia como tal.... y toma el action de la de la linea 37-->
+    </data>
+</openerp>

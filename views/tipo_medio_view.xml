@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- vista FOR  DE CO MULTIMEDIA -->
+    	<record  id="view_tipo_medio_form" model="ir.ui.view" >
+    		<field name="name" >co.tipo.medios.form</field>
+    		<field name="model" >co.tipo.medios</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<form string="Tipo Medios" version="7.0">
+    				<sheet>
+    					<div class="oe_title"> 
+    						<label for="nombre" class="oe_edit_only"/>
+    						<h1>
+    							<field name="nombre" />
+    						</h1>
+    					</div>
+					</sheet>
+    			</form>
+    		</field>
+    	</record>
+<!--VISTA TREE DE CO tipo medio-->
+		<record  id="view_tipo_medios_tree" model="ir.ui.view" >
+    		<field name="name" >co.tipo.medios.tree</field>
+    		<field name="model" >co.tipo.medios</field><!-- hace referencia al objeto creado en la clase -->
+    		<field name="arch" type="xml"> <!-- lo que este dentro de este sera lo que se muestre-->
+    			<tree string="Tipo Medios" >
+					<field name="nombre" />
+    			</tree>
+    		</field>
+    	</record>
+
+
+
+
+    	<record id="action_tipo_medios" model="ir.actions.act_window" >
+    		<field name="name" >Tipo Medios</field><!-- es-a esla verdadera etiqueta del menu-->
+    		<field name="res_model" >co.tipo.medios</field>
+    		<field name="view_type" >form</field>
+    		<field name="view_mode" >form,tree</field>
+    		<field name="view_id" ref="view_tipo_medios_tree"/>
+    		<field name="help" type="html">
+    			<p class="oe_view_nocontent_create">
+    				Aca se registran los contenidos tipo medios que estarán disponibles en el cátalogo.
+    			</p>
+    		</field>
+    	</record> 
+
+	   	<menuitem action="action_tipo_medios" id="menu_tipo_medios" sequence="5" 
+	   		parent="submebu_multimedia" /> 
+	   		<!--este es el menu multimedia como tal.... y toma el action de la de la linea 37-->
+    </data>
+</openerp>

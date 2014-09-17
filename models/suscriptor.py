@@ -5,6 +5,7 @@ from openerp.osv import osv, fields
 class suscriptor (osv.osv) : 
 	_name = 'co.suscriptor'
 	_description = 'CO Suscriptor'
+	_rec_name= 'nombre'
 
 	_columns = { #estos nombres son los que debe tener en la base de datos,
 	#EL primero es el nombre del campo en base de datos, el segundo el tipo de de dato, el tercero es la etiqueta del campo en la vista 
